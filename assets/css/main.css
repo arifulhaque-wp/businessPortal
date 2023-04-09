@@ -1,0 +1,105 @@
+/* google font import */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+/* reset css */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #212529;
+}
+
+a {
+  text-decoration: none;
+}
+
+img{
+  width: 100%;
+}
+         
+.btn {
+  background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB  51%, #1F1C2C  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+button.btn.btn-primary, .btn.reg_btn, .btn.btn-email {
+  margin: 0 auto;
+}
+.btn.reg_btn {
+  width: 50%;
+}
+.btn.btn-email {
+  width: 30%;
+}
+/* Main design part to update the page in various location */
+
+.right-bg {
+  background-color: #a1a1a1;
+}
+.main-content{
+  font-size: 18px;
+  font-weight: 600;
+}
+.main-content2{
+  font-size: 14px;
+  font-weight: 600;
+}
+.home-icon{
+  color: #000;
+}
+.userBusiness_image img {
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+/* media query */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
