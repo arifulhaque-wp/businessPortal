@@ -122,10 +122,7 @@
                                     <thead>
                                         <tr>
                                             <th>Business Name</th>
-                                            <th>Owner Name</th>
-                                            <th>Phone</th>
                                             <th>Business Email</th>
-                                            <th>Business Details</th>
                                             <th>Business Sector</th>
                                             <th>Business URL</th>
                                         </tr>
@@ -133,32 +130,23 @@
                                     <tfoot>
                                         <tr>
                                             <th>Business Name</th>
-                                            <th>Owner Name</th>
-                                            <th>Phone</th>
                                             <th>Business Email</th>
-                                            <th>Business Details</th>
                                             <th>Business Sector</th>
                                             <th>Business URL</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#">$320,800</a></td>
+                                            <td>Selim Kabar</td>
+                                            <td>test@gmail.com</td>
+                                            <td>Food</td>
+                                            <td><a href="#">Selim Kabab</a></td>
                                         </tr>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td><a href="#">$320,800</a></td>
+                                            <td>Prince Restaurant</td>
+                                            <td>abc@gmail.com</td>
+                                            <td>Food</td>
+                                            <td><a href="#">Prince Restaurant</a></td>
                                         </tr>
                                     </tbody>
                                 </table>

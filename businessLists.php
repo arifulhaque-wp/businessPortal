@@ -1,5 +1,8 @@
 <?php
 
+require_once "db.php";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Portal Business Lists</title>
+    <title>Business Lists</title>
 
     <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 
@@ -20,22 +23,37 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="offset-md-2 col-md-8 mt-5">
-                <h2 class="text-center">All Barber Business Lists</h2>
-                <table class="table table-striped mt-5">
+            <div class="col-md-12 mt-5">
+                <h2 class="text-center">All <?php ?> Business Lists</h2>
+                <table class="table table-striped table-hover table-bordered mt-5">
                     <thead>
-                      <tr>
+                      <tr class="table-primary">
                         <th scope="col">SL. #</th>
                         <th scope="col">Company Name</th>
+                        <th scope="col">Owner Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Business Email</th>
                         <th scope="col">Business Sector</th>
-                        <th scope="col">Contact</th>
                         <th scope="col">Business Link</th>
                       </tr>
                     </thead>
+                    <tfoot>
+                      <tr class="table-primary">
+                        <th scope="col">SL. #</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Owner Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Business Email</th>
+                        <th scope="col">Business Sector</th>
+                        <th scope="col">Business Link</th>
+                      </tr>
+                    </tfoot>
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
                         <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Otto</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td><a href="#">xyz</a></td>
@@ -44,12 +62,16 @@
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
+                        <td>Thornton</td>
+                        <td>Thornton</td>
                         <td>@mdo</td>
                         <td><a href="#">abc</a></td>
                       </tr>
                       <tr>
                         <th scope="row">3</th>
                         <td>Larry the Bird</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
                         <td>@twitter</td>
                         <td>@mdo</td>
                         <td><a href="#">dvsd</a></td>
@@ -58,6 +80,8 @@
                         <th scope="row">4</th>
                         <td>Larry the Bird</td>
                         <td>@twitter</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
                         <td>@mdo</td>
                         <td><a href="#">bfsdf</a></td>
                       </tr>

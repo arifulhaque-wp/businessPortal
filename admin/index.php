@@ -13,11 +13,15 @@
   $empmsg_apass  = "";
 
   if ( empty( $admin_email ) ) {
-   $empmsg_aemail = "Email not found.";
+   $empmsg_aemail = "Email is empty.";
   }
 
   if ( empty( $admin_pass ) ) {
-   $empmsg_apass = "Password not match.";
+   $empmsg_apass = "Password is empty.";
+  }
+
+  if (  ($admin_email && $admin_pass) == TRUE  ) {
+    $empmsg_login = "Email or Password not match";
   }
 
   if ( !empty( $admin_email ) && !empty( $admin_pass ) ) {
@@ -29,7 +33,7 @@
    if ( $query->num_rows > 0 ) {
     header( 'Location:dashboard.php' );
    } else {
-    echo "Login Failed";
+    echo $empmsg_login;
    }
   }
  }
