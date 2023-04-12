@@ -1,27 +1,27 @@
 <?php
 
- require "../db.php";
+    require "../db.php";
 
- if ( isset( $_POST['save'] ) ) {
+    if ( isset( $_POST['save'] ) ) {
 
-  // var_dump($_POST['cat_name']); exit;
-  $new_sector = $_POST['cat_name'];
+        // var_dump($_POST['cat_name']); exit;
+        $new_sector = $_POST['cat_name'];
 
-  $empmsg_add_sector = "";
+        $empmsg_add_sector = "";
 
-  if ( empty( $new_sector ) ) {
-   $empmsg_add_sector = "Please Add new sector";
-  }
+        if ( empty( $new_sector ) ) {
+            $empmsg_add_sector = "Please Add new sector";
+        }
 
-  if ( !empty( $new_sector ) ) {
+        if ( !empty( $new_sector ) ) {
 
-   $sql = "INSERT INTO business_category (cat_name) VALUES ('$new_sector')";
+            $sql = "INSERT INTO business_category (cat_name) VALUES ('$new_sector')";
 
-   if ( $conn->query( $sql ) ) {
-    header( 'Location:sector.php' );
-   }
-  }
- }
+            if ( $conn->query( $sql ) ) {
+                header( 'Location:sector.php' );
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -138,6 +138,7 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
+                                        $n   = 1;
                                         $sql = "SELECT * FROM business_category ORDER BY cat_name ASC";
 
                                         $result = $conn->query( $sql );
@@ -146,7 +147,7 @@
                                             while ( $data = mysqli_fetch_assoc( $result ) ) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $data['id']; ?></td>
+                                                <td><?php echo $n; ?></td>
                                                 <td><?php echo $data['cat_name']; ?></td>
                                                 <td>
                                                     <a href="edit.php" class="btn btn-success">Edit</a>
@@ -154,6 +155,7 @@
                                                 </td>
                                             </tr>
                                             <?php
+                                                $n++;
                                             }
                                         }
                                     ?>
