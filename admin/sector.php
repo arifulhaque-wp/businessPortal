@@ -4,7 +4,6 @@
 
     if ( isset( $_POST['save'] ) ) {
 
-        // var_dump($_POST['cat_name']); exit;
         $new_sector = $_POST['cat_name'];
 
         $empmsg_add_sector = "";
@@ -109,7 +108,7 @@
                                     All Business Sectors
                                 </div>
                                 <div class="add-btn">
-                                    <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="add_form" class="row g-3">
+                                    <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="add_form" class="row">
                                         <div class="col-auto">
                                             <input type="text" class="form-control" id="add_sector" name="cat_name" placeholder="Type New Sector">
                                             <span class="text-danger"><?php if ( isset( $_POST['save'] ) ) {echo $empmsg_add_sector;} ?></span>
