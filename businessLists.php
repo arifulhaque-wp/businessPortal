@@ -21,7 +21,7 @@ require_once "db.php";
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container bg-white">
         <div class="row">
             <div class="col-md-12 mt-5">
                 <h2 class="text-center">All <?php ?> Business Lists</h2>

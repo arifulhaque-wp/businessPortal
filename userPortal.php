@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container bg-white">
         <div class="row mt-5">
             <div class="col-md-6">
                 <div class="userBusiness_image">

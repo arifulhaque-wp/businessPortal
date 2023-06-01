@@ -22,7 +22,7 @@ require_once "db.php";
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mt-5 border border-dark">
+            <div class="col-md-6 mt-5 border border-dark bg-white">
                 <div class="left-wrapper">
                     <div class="left-header-content d-flex align-items-center justfy-content-between border-bottom border-dark">
                         <div class="portal-image">
@@ -45,7 +45,7 @@ require_once "db.php";
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-5 right-bg">
+            <div class="col-md-6 mt-5 bg-secondary">
                 <div class="right-wrapper">
                     <div class="business-list-content text-center">
                         <div class="business-list-heading py-3">

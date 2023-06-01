@@ -52,7 +52,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="offset-md-3 col-md-6 mt-5">
+            <div class="offset-md-3 col-md-6 mt-5 bg-white">
                 <div class="header-content d-flex align-items-center justify-content-between mb-4">
                     <a href="index.php" class="home-icon fs-2 fw-bold"><i class="bi bi-house-fill"></i></a>
                     <h2>Business Registration Form.</h2>
