@@ -11,9 +11,9 @@
 
         <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" type="image/x-icon">
 
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
         <link href="assets/css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -51,7 +51,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <div class="sb-sidenav-menu-heading">Business Sector</div>
+                            <div class="sb-sidenav-menu-heading">All Sector</div>
                             <a class="nav-link" href="sector.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Add Sector
@@ -129,7 +129,7 @@
                                 Business Owner Lists
                             </div>
                             <div class="card-body">
-                                <table class="table table-striped table-hover table-bordered">
+                                <table id="myTable" class="table table-striped table-hover table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Business Name</th>
@@ -180,7 +180,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Business Portal 2023</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
@@ -191,7 +191,12 @@
                 </footer>
             </div>
         </div>
+
+
+        <script src="assets/js/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         <script src="assets/js/main.js"></script>
     </body>
 </html>
