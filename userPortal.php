@@ -20,7 +20,7 @@
 <body>
     <div class="container bg-white">
         <div class="row mt-5">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2">
                 <div class="userBusiness_image">
                     <img src="assets/images/userPortal.jpg" class="img-thumbnail" alt="">
                 </div>

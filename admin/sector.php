@@ -1,26 +1,35 @@
 <?php
 
-    require "../db.php";
+ require "../db.php";
 
-    if ( isset( $_POST['save'] ) ) {
+ if ( isset( $_POST['save'] ) ) {
 
-        $new_sector = $_POST['cat_name'];
+  $new_sector = $_POST['cat_name'];
 
-        $empmsg_add_sector = "";
+  $empmsg_add_sector = "";
 
-        if ( empty( $new_sector ) ) {
-            $empmsg_add_sector = "Please Add new sector";
-        }
+  $errors = array();
 
-        if ( !empty( $new_sector ) ) {
+  $sql      = "SELECT * FROM business_category WHERE cat_name=='$new_sector'";
+  $result   = mysqli_query( $conn, $sql );
+  $rowCount = mysqli_num_rows( $result );
+  if ( $rowCount > 0 ) {
+   array_push( $errors, "Sector already exists in the list.." );
+  }
 
-            $sql = "INSERT INTO business_category (cat_name) VALUES ('$new_sector')";
+  if ( empty( $new_sector ) ) {
+   $empmsg_add_sector = "Please Add new sector";
+  }
 
-            if ( $conn->query( $sql ) ) {
-                header( 'Location:sector.php' );
-            }
-        }
-    }
+  if ( !empty( $new_sector ) ) {
+
+   $sql = "INSERT INTO business_category (cat_name) VALUES ('$new_sector')";
+
+   if ( $conn->query( $sql ) ) {
+    header( 'Location:sector.php' );
+   }
+  }
+ }
 ?>
 
 <!DOCTYPE html>
@@ -137,14 +146,14 @@
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        $n   = 1;
-                                        $sql = "SELECT * FROM business_category ORDER BY cat_name ASC";
+                                     $n   = 1;
+                                     $sql = "SELECT * FROM business_category ORDER BY cat_name ASC";
 
-                                        $result = $conn->query( $sql );
+                                     $result = $conn->query( $sql );
 
-                                        if ( $result ) {
-                                            while ( $data = mysqli_fetch_assoc( $result ) ) {
-                                            ?>
+                                     if ( $result ) {
+                                      while ( $data = mysqli_fetch_assoc( $result ) ) {
+                                      ?>
                                             <tr>
                                                 <td><?php echo $n; ?></td>
                                                 <td><?php echo $data['cat_name']; ?></td>
@@ -154,10 +163,10 @@
                                                 </td>
                                             </tr>
                                             <?php
-                                                $n++;
-                                            }
-                                        }
-                                    ?>
+                                             $n++;
+                                              }
+                                             }
+                                            ?>
                                     </tbody>
                                 </table>
                             </div>

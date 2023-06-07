@@ -1,42 +1,43 @@
 <?php
 
- require "../db.php";
+    require "../db.php";
 
- if ( isset( $_POST['login'] ) ) {
+    if ( isset( $_POST['login'] ) ) {
 
-  $admin_email = $_POST['email'];
-  $admin_pass  = $_POST['password'];
+        $admin_email = $_POST['email'];
+        $admin_pass  = $_POST['password'];
 
-  $admin_pass_hash = md5( $admin_pass );
+        $admin_pass_hash = md5( $admin_pass );
 
-  $empmsg_aemail = "";
-  $empmsg_apass  = "";
+        $errors = array();
 
-  if ( empty( $admin_email ) ) {
-   $empmsg_aemail = "Email is empty.";
-  }
+        $empmsg_aemail = "";
+        $empmsg_apass  = "";
+        $empmsg_login  = "";
 
-  if ( empty( $admin_pass ) ) {
-   $empmsg_apass = "Password is empty.";
-  }
+        if ( empty( $admin_email ) ) {
+            $empmsg_aemail = "Email is empty.";
+        }
 
-  if (  ($admin_email && $admin_pass) == TRUE  ) {
-    $empmsg_login = "Email or Password not match";
-  }
+        if ( empty( $admin_pass ) ) {
+            $empmsg_apass = "Password is empty.";
+        }
 
-  if ( !empty( $admin_email ) && !empty( $admin_pass ) ) {
+        if (  ( $admin_email && $admin_pass ) == TRUE ) {
+            $empmsg_login = "Email or Password not match";
+        }
 
-   $sql = "SELECT * FROM admin WHERE email = '$admin_email' AND password = '$admin_pass_hash'";
+        if ( !empty( $admin_email ) && !empty( $admin_pass ) ) {
 
-   $query = $conn->query( $sql );
+            $sql = "SELECT * FROM admin WHERE email = '$admin_email' AND password = '$admin_pass_hash'";
 
-   if ( $query->num_rows > 0 ) {
-    header( 'Location:dashboard.php' );
-   } else {
-    echo $empmsg_login;
-   }
-  }
- }
+            $query = $conn->query( $sql );
+
+            if ( $query->num_rows > 0 ) {
+                header( 'Location:dashboard.php' );
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +61,7 @@
     <div class="container">
         <div class="content-area">
             <h2 class="title-text">Admin Login</h2>
+            <p class="text-center text-danger"><?php if ( isset( $_POST['login'] ) ) {echo $empmsg_login;} ?></p>
             <div class="form-container">
                 <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="login_form"
                     class="login-form">
@@ -80,7 +82,7 @@
                         <button type="submit" name="login" class="btn">Login</button>
                     </div>
                     <div id="createAccount" class="form-text text-center my-2 text-dark">
-                        Not Registered?<a href="registration.php" class="text-dark fw-bold">Create an Account</a>
+                        Not Registered? <a href="registration.php" class="text-dark fw-bold">Create an Account</a>
                     </div>
                 </form>
             </div>

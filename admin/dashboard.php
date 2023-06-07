@@ -1,5 +1,8 @@
 <?php
 
+ require "../db.php";
+
+ $admin_name = $_POST['name'];
 
 ?>
 <!DOCTYPE html>
@@ -66,8 +69,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        <?php ?>
+                        <div class="small">Logged in as: <?php echo "Hello";?></div>
                     </div>
                 </nav>
             </div>
@@ -175,7 +177,7 @@
 
 
         <script src="assets/js/jquery-3.6.4.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         <script src="assets/js/main.js"></script>

@@ -136,7 +136,7 @@
                                             <th>Owner Name</th>
                                             <th>Phone</th>
                                             <th>Business Email</th>
-                                            <th>Business Details</th>
+                                            <th>Business info</th>
                                             <th>Business Sector</th>
                                             <th>Business URL</th>
                                         </tr>
@@ -147,7 +147,7 @@
                                             <th>Owner Name</th>
                                             <th>Phone</th>
                                             <th>Business Email</th>
-                                            <th>Business Details</th>
+                                            <th>Business Info</th>
                                             <th>Business Sector</th>
                                             <th>Business URL</th>
                                         </tr>
@@ -156,17 +156,17 @@
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
+                                            <td>123456789</td>
+                                            <td>business@gmail.com</td>
                                             <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>Barber</td>
                                             <td><a href="#">$320,800</a></td>
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
+                                            <td>Database Architect</td>
+                                            <td>123456789</td>
+                                            <td>business@gmail.com</td>
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
                                             <td><a href="#">$320,800</a></td>

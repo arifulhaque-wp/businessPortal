@@ -16,7 +16,7 @@
   $empmsg_b_cat = "";
 
   if ( empty( $shop_name ) ) {
-   $empmsg_sname = "Please fillup user name.";
+   $empmsg_sname = "Please fillup shop name.";
   }
 
   if ( empty( $email ) ) {
