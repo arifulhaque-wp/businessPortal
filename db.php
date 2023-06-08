@@ -2,14 +2,13 @@
 
 $localHost  = "localhost";
 $dbUser     = "root";
-$dbpassword = "";
-$dbname     = "business_portal";
+$dbPassword = "";
+$dbName     = "business_portal";
 
-$conn = new mysqli( $localHost, $dbUser, $dbpassword, $dbname );
+$conn = mysqli_connect( $localHost, $dbUser, $dbPassword, $dbName );
 
-if ( $conn->connect_errno ) {
-    echo "Failed to connect with Database: " . $conn->connect_error;
-    exit();
+if ( !$conn ) {
+ die( "Failed to connect with Database." );
 }
 
 ?>

@@ -1,43 +1,12 @@
 <?php
 
-    require "../db.php";
+session_start();
+if(isset($_SESSION['adminUser'])){
+    header('Location:dashboard.php');
+}
 
-    if ( isset( $_POST['login'] ) ) {
+ require "../db.php";
 
-        $admin_email = $_POST['email'];
-        $admin_pass  = $_POST['password'];
-
-        $admin_pass_hash = md5( $admin_pass );
-
-        $errors = array();
-
-        $empmsg_aemail = "";
-        $empmsg_apass  = "";
-        $empmsg_login  = "";
-
-        if ( empty( $admin_email ) ) {
-            $empmsg_aemail = "Email is empty.";
-        }
-
-        if ( empty( $admin_pass ) ) {
-            $empmsg_apass = "Password is empty.";
-        }
-
-        if (  ( $admin_email && $admin_pass ) == TRUE ) {
-            $empmsg_login = "Email or Password not match";
-        }
-
-        if ( !empty( $admin_email ) && !empty( $admin_pass ) ) {
-
-            $sql = "SELECT * FROM admin WHERE email = '$admin_email' AND password = '$admin_pass_hash'";
-
-            $query = $conn->query( $sql );
-
-            if ( $query->num_rows > 0 ) {
-                header( 'Location:dashboard.php' );
-            }
-        }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +30,31 @@
     <div class="container">
         <div class="content-area">
             <h2 class="title-text">Admin Login</h2>
-            <p class="text-center text-danger"><?php if ( isset( $_POST['login'] ) ) {echo $empmsg_login;} ?></p>
             <div class="form-container">
+            <?php
+             if ( isset( $_POST['login'] ) ) {
+
+              $admin_email = $_POST['email'];
+              $admin_pass  = $_POST['password'];
+
+              $sql       = "SELECT * FROM admin WHERE email = '$admin_email'";
+              $result    = mysqli_query( $conn, $sql );
+              $adminUser = mysqli_fetch_array( $result, MYSQLI_ASSOC );
+
+              if ( $adminUser ) {
+               if ( password_verify( $admin_pass, $adminUser["password"] ) ) {
+                session_start();
+                $_SESSION['adminUser'] = "yes";
+                header( 'Location:dashboard.php' );
+                die();
+               } else {
+                echo "<div class='alert alert-danger'>Password does not match!</div>";
+               }
+              } else {
+               echo "<div class='alert alert-danger'>Email does not match!</div>";
+              }
+             }
+            ?>
                 <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="login_form"
                     class="login-form">
                     <div class="avater">
@@ -71,12 +63,10 @@
 
                     <div class="mb-3">
                         <input type="email" class="form-control" id="useremail" name="email" placeholder="Admin Email">
-                        <span class="text-danger"><?php if ( isset( $_POST['login'] ) ) {echo $empmsg_aemail;} ?></span>
                     </div>
                     <div class="mb-3">
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="password">
-                        <span class="text-danger"><?php if ( isset( $_POST['login'] ) ) {echo $empmsg_apass;} ?></span>
                     </div>
                     <div class="submit-btn">
                         <button type="submit" name="login" class="btn">Login</button>
