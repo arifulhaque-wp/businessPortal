@@ -49,7 +49,7 @@
                                     All Business Sectors
                                 </div>
                                 <div class="add-btn">
-                                    <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="add_form" class="row">
+                                    <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="POST" id="add_form" class="row">
                                         <div class="col-auto">
                                             <input type="text" class="form-control form-control-sm" id="add_sector" name="cat_name" placeholder="Type New Sector">
                                             <?php
@@ -80,6 +80,7 @@
                                                if ( $prepareStmt ) {
                                                 mysqli_stmt_bind_param( $stmt, "s", $add_sector );
                                                 mysqli_stmt_execute( $stmt );
+                                                
                                                 echo "<span class='text-success'>Sector Added</span>";
                                                } else {
                                                 die( "Something went wrong." );
@@ -115,10 +116,11 @@
                                      $n   = 1;
                                      $sql = "SELECT * FROM business_category ORDER BY cat_name ASC";
 
-                                     $result = $conn->query( $sql );
-
-                                     if ( $result ) {
-                                      while ( $data = mysqli_fetch_assoc( $result ) ) {
+                                     $query = $conn->query( $sql );
+                                     
+                                     if ( $query ) {
+                                      while ( $data = mysqli_fetch_assoc( $query ) ) {
+                                       
                                        $cat_id   = $data['cat_id'];
                                        $cat_name = $data['cat_name'];
                                       ?>
@@ -126,8 +128,8 @@
                                             <td><?php echo $n; ?></td>
                                             <td><?php echo $cat_name; ?></td>
                                             <td>
-                                                <a href="edit_cat.php?id=$cat_id" class="btn btn-success btn-sm">Edit</a>
-                                                <a href="delete_cat.php" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="edit_cat.php?id=<?php echo $cat_id;?>" class="btn btn-success btn-sm">Edit</a>
+                                                <a href="delete_cat.php?id=<?php echo $cat_id;?>" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
                                         <?php

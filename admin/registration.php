@@ -85,7 +85,7 @@
                   }
                  }
                 ?>
-                <form class="login-form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post">
+                <form class="login-form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="POST">
                     <div class="mb-3">
                         <input type="name" class="form-control" id="username" name="name" placeholder="Admin Name">
                     </div>

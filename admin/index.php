@@ -1,11 +1,11 @@
 <?php
 
-session_start();
-if(isset($_SESSION['adminUser'])){
-    header('Location:dashboard.php');
-}
+    session_start();
+    if ( isset( $_SESSION['adminUser'] ) ) {
+        header( 'Location:dashboard.php' );
+    }
 
- require "../db.php";
+    require "../db.php";
 
 ?>
 
@@ -32,31 +32,30 @@ if(isset($_SESSION['adminUser'])){
             <h2 class="title-text">Admin Login</h2>
             <div class="form-container">
             <?php
-             if ( isset( $_POST['login'] ) ) {
+                if ( isset( $_POST['login'] ) ) {
+                    
+                    $admin_email = $_POST['email'];
+                    $admin_pass  = $_POST['password'];
 
-              $admin_email = $_POST['email'];
-              $admin_pass  = $_POST['password'];
+                    $sql       = "SELECT * FROM admin WHERE email = '$admin_email'";
+                    $result    = mysqli_query( $conn, $sql );
+                    $adminUser = mysqli_fetch_array( $result, MYSQLI_ASSOC );
 
-              $sql       = "SELECT * FROM admin WHERE email = '$admin_email'";
-              $result    = mysqli_query( $conn, $sql );
-              $adminUser = mysqli_fetch_array( $result, MYSQLI_ASSOC );
-
-              if ( $adminUser ) {
-               if ( password_verify( $admin_pass, $adminUser["password"] ) ) {
-                session_start();
-                $_SESSION['adminUser'] = "yes";
-                header( 'Location:dashboard.php' );
-                die();
-               } else {
-                echo "<div class='alert alert-danger'>Password does not match!</div>";
-               }
-              } else {
-               echo "<div class='alert alert-danger'>Email does not match!</div>";
-              }
-             }
+                    if ( $adminUser ) {
+                        if ( password_verify( $admin_pass, $adminUser["password"] ) ) {
+                            session_start();
+                            $_SESSION['adminUser'] = "yes";
+                            header( 'Location:dashboard.php' );
+                            die();
+                        } else {
+                            echo "<div class='alert alert-danger'>Password does not match!</div>";
+                        }
+                    } else {
+                        echo "<div class='alert alert-danger'>Email does not match!</div>";
+                    }
+                }
             ?>
-                <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="login_form"
-                    class="login-form">
+                <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="POST" id="login_form" class="login-form">
                     <div class="avater">
                         <img src="assets/images/avatar-1295397__340.webp" alt="profile">
                     </div>
