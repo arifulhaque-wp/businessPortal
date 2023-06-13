@@ -22,7 +22,7 @@ require_once "db.php";
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mt-5 border border-dark bg-white">
+            <div class="col-md-6 mt-4 border border-dark">
                 <div class="left-wrapper">
                     <div class="left-header-content d-flex align-items-center justfy-content-between border-bottom border-dark">
                         <div class="portal-image">
@@ -30,22 +30,23 @@ require_once "db.php";
                         </div>
 
                         <div class="portal-heading-content ps-2">
-                            <h1>Mohammadpur<br>Tajmoholroad</h1>
+                            <h1>Mohammadpur</h1>
                             <h4>Where a diverse community thrives.</h4>
                         </div>
                     </div>
 
                     <div class="left-wrapper-content pt-4">
                         <p class="main-content">We like to help local businesses move into wider Internet arena. Where you can reach a larger audience and find new customer. Our goal is to provide you a simple solution to publish your business webpage for free. You see the sectors link on th eright side and your business can be visible there as well.</p>
+                        <p class="main-content">We like to help local businesses move into wider Internet arena. Where you can reach a larger audience and find new customer. Our goal is to provide you a simple solution to publish your business webpage for free. You see the sectors link on th eright side and your business can be visible there as well.</p>
 
                         <p class="main-content2">You need to register your details and fill up few fields and publish your web page in less than 5 minutes.</p>
                         <div class="registrationBtn text-center pb-3">
-                            <a href="registration.php" class="btn reg_btn">Click To Registar</a>
+                            <a href="userRegistration.php" class="btn reg_btn">Click To Registar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-5 bg-secondary">
+            <div class="col-md-6 mt-4 bg-secondary">
                 <div class="right-wrapper">
                     <div class="business-list-content text-center">
                         <div class="business-list-heading py-3">
@@ -60,8 +61,10 @@ require_once "db.php";
 
                             if ( $result ) {
                                 while ( $data = mysqli_fetch_assoc( $result ) ) {
+                                    $cat_id = $data['cat_id'];
+                                    $cat_name = $data['cat_name'];
                                 ?>
-                                <a href="businessLists.php" class="btn"><?php echo $data['cat_name']; ?></a>
+                                <a href="userBusinessLists.php?cat_name=<?php echo $cat_name;?>" class="btn"><?php echo $data['cat_name']; ?></a>
                                 <?php
                                 }
                             }

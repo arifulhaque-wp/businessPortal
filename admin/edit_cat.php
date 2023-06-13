@@ -1,14 +1,14 @@
 <?php
 
- session_start();
- if ( !isset( $_SESSION['adminUser'] ) ) {
-  header( 'Location:index.php' );
- }
+session_start();
+if ( !isset( $_SESSION['adminUser'] ) ) {
+    header( 'Location:index.php' );
+}
 
- require "../db.php";
+require "../db.php";
 
- $title = "Edit Sector";
- include 'header.php';
+$title = "Edit Sector";
+include 'header.php';
 ?>
 
         <div id="layoutSidenav">
@@ -53,29 +53,29 @@
                             <div class="card-body">
                                 <div class="add-btn">
                                     <?php
-                                     if ( isset( $_GET['id'] ) ) {
-                                      $getid = $_GET['id'];
+                                    if ( isset( $_GET['id'] ) ) {
+                                        $getid = $_GET['id'];
 
-                                      $sql   = "SELECT * FROM business_category WHERE cat_id=$getid";
-                                      $query = $conn->query( $sql );
+                                        $sql   = "SELECT * FROM business_category WHERE cat_id=$getid";
+                                        $query = $conn->query( $sql );
 
-                                      $data     = mysqli_fetch_assoc( $query );
-                                      $cat_id   = $data['cat_id'];
-                                      $cat_name = $data['cat_name'];
-                                     }
+                                        $data     = mysqli_fetch_assoc( $query );
+                                        $cat_id   = $data['cat_id'];
+                                        $cat_name = $data['cat_name'];
+                                    }
 
-                                     if ( isset( $_GET['cat_name'] ) ) {
-                                      $new_catName = $_GET['cat_name'];
-                                      $new_catId   = $_GET['cat_id'];
+                                    if ( isset( $_GET['cat_name'] ) ) {
+                                        $new_catName = $_GET['cat_name'];
+                                        $new_catId   = $_GET['cat_id'];
 
-                                      $new_sql = "UPDATE business_category SET cat_name='$new_catName' WHERE cat_id=$new_catId";
+                                        $new_sql = "UPDATE business_category SET cat_name='$new_catName' WHERE cat_id=$new_catId";
 
-                                      if ( $conn->query( $new_sql ) == TRUE ) {
-                                       echo "<span class='text-success'>Update Success</div>";
-                                      } else {
-                                       echo "<span class='text-danger'>Not Update</div>";
-                                      }
-                                     }
+                                        if ( $conn->query( $new_sql ) == TRUE ) {
+                                            echo "<span class='text-success'>Update Success</div>";
+                                        } else {
+                                            echo "<span class='text-danger'>Not Update</div>";
+                                        }
+                                    }
 
                                     ?>
                                     <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="GET" id="edit_form" class="row">
@@ -83,7 +83,7 @@
                                             <input type="text" class="form-control" name="cat_id" value="<?php echo $cat_id; ?>" hidden>
                                         </div>
                                         <div class="col-auto">
-                                            <input type="text" class="form-control" id="edit_sector" name="cat_name" value="<?php if ( isset( $_GET['cat_name'] ) ) {echo $new_catName;} else {echo $cat_name;} ?>">
+                                            <input type="text" class="form-control" id="edit_sector" name="cat_name" value="<?php if ( isset( $_GET['cat_name'] ) ) {echo $new_catName;} else {echo $cat_name;}?>">
                                         </div>
                                         <div class="col-auto">
                                             <button type="submit" name="update" class="btn btn-success mb-3">Update Sector</button>
@@ -95,4 +95,4 @@
                     </div>
                 </main>
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php';?>

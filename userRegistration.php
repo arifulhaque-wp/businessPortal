@@ -1,37 +1,37 @@
 <?php
 
- if ( isset( $_POST['submit'] ) ) {
+if ( isset( $_POST['submit'] ) ) {
 
-  $shop_name        = $_POST['shop_name'];
-  $owner_name       = $_POST['owner_name'];
-  $cell_number      = $_POST['phone'];
-  $email            = $_POST['email'];
-  $shop_description = $_POST['description'];
-  $business_cat     = $_POST['bussiness_cat_id'];
-  $upload_file      = $_POST['upload_file'];
+    $shop_name = $_POST['shop_name'];
+    $owner_name = $_POST['owner_name'];
+    $cell_number = $_POST['phone'];
+    $email = $_POST['email'];
+    $shop_description = $_POST['description'];
+    $business_cat = $_POST['bussiness_cat_id'];
+    $upload_file = $_POST['upload_file'];
 
-  $empmsg_sname = "";
-  $empmsg_email = "";
-  $empmsg_desc  = "";
-  $empmsg_b_cat = "";
+    $empmsg_sname = "";
+    $empmsg_email = "";
+    $empmsg_desc = "";
+    $empmsg_b_cat = "";
 
-  if ( empty( $shop_name ) ) {
-   $empmsg_sname = "Please fillup shop name.";
-  }
+    if ( empty( $shop_name ) ) {
+        $empmsg_sname = "Please fillup shop name.";
+    }
 
-  if ( empty( $email ) ) {
-   $empmsg_email = "Please provide a valid email.";
-  }
+    if ( empty( $email ) ) {
+        $empmsg_email = "Please provide a valid email.";
+    }
 
-  if ( empty( $shop_description ) ) {
-   $empmsg_desc = "Please write details of your offer.";
-  }
+    if ( empty( $shop_description ) ) {
+        $empmsg_desc = "Please write details of your offer.";
+    }
 
-  if ( empty( $business_cat ) ) {
-   $empmsg_b_cat = "Please select business sector.";
-  }
+    if ( empty( $business_cat ) ) {
+        $empmsg_b_cat = "Please select business sector.";
+    }
 
- }
+}
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +58,13 @@
                     <h2>Business Registration Form.</h2>
                 </div>
                 <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="reg_form" class="reg-form">
+                <?php
+                
+                ?>
                     <div class="mb-3">
                         <label for="business_name" class="form-label">Name of your business (required)</label>
-                        <input type="text" class="form-control" name="shop_name" id="business_name" value="<?php if ( isset( $_POST['submit'] ) ) {echo $shop_name;} ?>">
-                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_sname;} ?></span>
+                        <input type="text" class="form-control" name="shop_name" id="business_name" value="<?php if ( isset( $_POST['submit'] ) ) {echo $shop_name;}?>">
+                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_sname;}?></span>
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Contact Person's name (optional)</label>
@@ -73,17 +76,17 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address (required)</label>
-                        <input type="email" class="form-control" name="email" id="email" value="<?php if ( isset( $_POST['submit'] ) ) {echo $email;} ?>">
-                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_email;} ?></span>
+                        <input type="email" class="form-control" name="email" id="email" value="<?php if ( isset( $_POST['submit'] ) ) {echo $email;}?>">
+                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_email;}?></span>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">What your business offers - Please put as much details as you like for others to see (required)</label>
-                        <textarea class="form-control" name="description" id="description" rows="3"><?php if ( isset( $_POST['submit'] ) ) {echo $shop_description;} ?></textarea>
-                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_desc;} ?></span>
+                        <textarea class="form-control" name="description" id="description" rows="3"><?php if ( isset( $_POST['submit'] ) ) {echo $shop_description;}?></textarea>
+                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_desc;}?></span>
                     </div>
                     <div class="mb-3">
                         <label for="form-select" class="form-label">Choose your business sector from the dropdown list (required)</label>
-                        <select id="form-select" name="bussiness_cat_id" class="form-select" value="<?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_b_cat;} ?>">
+                        <select id="form-select" name="bussiness_cat_id" class="form-select" value="<?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_b_cat;}?>">
                             <option value="" selected hiddden>Select Business Sector</option>
                             <option value="">Barber</option>
                             <option value="">Construction</option>
@@ -96,7 +99,7 @@
                             <option value="">Trade</option>
                             <option value="">Others</option>
                         </select>
-                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_b_cat;} ?></span>
+                        <span class="text-danger"><?php if ( isset( $_POST['submit'] ) ) {echo $empmsg_b_cat;}?></span>
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Please upload your shop's image (optional)</label>

@@ -1,14 +1,14 @@
 <?php
 
- session_start();
- if ( !isset( $_SESSION['adminUser'] ) ) {
-  header( 'Location:index.php' );
- }
+session_start();
+if ( !isset( $_SESSION['adminUser'] ) ) {
+    header( 'Location:index.php' );
+}
 
- require "../db.php";
+require "../db.php";
 
- $title="Admin Dashboard";
- include('header.php');
+$title = "Admin Dashboard";
+include 'header.php';
 ?>
 
         <div id="layoutSidenav">
@@ -69,12 +69,6 @@
                                             <td>test@gmail.com</td>
                                             <td>Food</td>
                                             <td><a href="#">Selim Kabab</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prince Restaurant</td>
-                                            <td>abc@gmail.com</td>
-                                            <td>Food</td>
-                                            <td><a href="#">Prince Restaurant</a></td>
                                         </tr>
                                     </tbody>
                                 </table>

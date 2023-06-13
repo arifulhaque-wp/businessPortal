@@ -1,10 +1,10 @@
 <?php
 
- session_start();
- if ( isset( $_SESSION['adminUser'] ) ) {
-  header( 'Location:dashboard.php' );
- }
- require_once "../db.php";
+session_start();
+if ( isset( $_SESSION['adminUser'] ) ) {
+    header( 'Location:dashboard.php' );
+}
+require_once "../db.php";
 
 ?>
 
@@ -30,60 +30,60 @@
             <h2 class="title-text">Admin Registration</h2>
             <div class="form-container">
                 <?php
-                 if ( isset( $_POST['submit'] ) ) {
+                if ( isset( $_POST['submit'] ) ) {
 
-                  $admin_name     = $_POST['name'];
-                  $admin_email    = $_POST['email'];
-                  $admin_pass     = $_POST['password'];
-                  $admin_con_pass = $_POST['conpassword'];
+                    $admin_name = $_POST['name'];
+                    $admin_email = $_POST['email'];
+                    $admin_pass = $_POST['password'];
+                    $admin_con_pass = $_POST['conpassword'];
 
-                  $admin_pass_hash = password_hash( $admin_pass, PASSWORD_DEFAULT );
+                    $admin_pass_hash = password_hash( $admin_pass, PASSWORD_DEFAULT );
 
-                  $errors = array();
+                    $errors = array();
 
-                  if ( empty( $admin_name ) OR empty( $admin_email ) OR empty( $admin_pass ) OR empty( $admin_con_pass ) ) {
-                   array_push( $errors, "All fields are required" );
-                  }
+                    if ( empty( $admin_name ) OR empty( $admin_email ) OR empty( $admin_pass ) OR empty( $admin_con_pass ) ) {
+                        array_push( $errors, "All fields are required" );
+                    }
 
-                  if ( !filter_var( $admin_email, FILTER_VALIDATE_EMAIL ) ) {
-                   array_push( $errors, "Email is not valid" );
-                  }
+                    if ( !filter_var( $admin_email, FILTER_VALIDATE_EMAIL ) ) {
+                        array_push( $errors, "Email is not valid" );
+                    }
 
-                  if ( strlen( $admin_pass ) < 5 ) {
-                   array_push( $errors, "Password must be at least 5 character long" );
-                  }
+                    if ( strlen( $admin_pass ) < 5 ) {
+                        array_push( $errors, "Password must be at least 5 character long" );
+                    }
 
-                  if ( $admin_pass !== $admin_con_pass ) {
-                   array_push( $errors, "Password does not match" );
-                  }
+                    if ( $admin_pass !== $admin_con_pass ) {
+                        array_push( $errors, "Password does not match" );
+                    }
 
-                  $sql      = "SELECT * FROM admin WHERE email = '$admin_email'";
-                  $result   = mysqli_query( $conn, $sql );
-                  $rowCount = mysqli_num_rows( $result );
+                    $sql = "SELECT * FROM admin WHERE email = '$admin_email'";
+                    $result = mysqli_query( $conn, $sql );
+                    $rowCount = mysqli_num_rows( $result );
 
-                  if ( $rowCount > 0 ) {
-                   array_push( $errors, "Email already exists!" );
-                  }
+                    if ( $rowCount > 0 ) {
+                        array_push( $errors, "Email already exists!" );
+                    }
 
-                  if ( count( $errors ) > 0 ) {
-                   foreach ( $errors as $error ) {
-                    echo "<div class='alert alert-danger'>$error</div>";
-                   }
-                  } else {
+                    if ( count( $errors ) > 0 ) {
+                        foreach ( $errors as $error ) {
+                            echo "<div class='alert alert-danger'>$error</div>";
+                        }
+                    } else {
 
-                   $sql         = "INSERT INTO admin (name, email, password) VALUES(?,?,?)";
-                   $stmt        = mysqli_stmt_init( $conn );
-                   $prepareStmt = mysqli_stmt_prepare( $stmt, $sql );
+                        $sql = "INSERT INTO admin (name, email, password) VALUES(?,?,?)";
+                        $stmt = mysqli_stmt_init( $conn );
+                        $prepareStmt = mysqli_stmt_prepare( $stmt, $sql );
 
-                   if ( $prepareStmt ) {
-                    mysqli_stmt_bind_param( $stmt, "sss", $admin_name, $admin_email, $admin_pass_hash );
-                    mysqli_stmt_execute( $stmt );
-                    echo "<div class='alert alert-success'>Registared Successfully.</div>";
-                   } else {
-                    die( "Something went wrong." );
-                   }
-                  }
-                 }
+                        if ( $prepareStmt ) {
+                            mysqli_stmt_bind_param( $stmt, "sss", $admin_name, $admin_email, $admin_pass_hash );
+                            mysqli_stmt_execute( $stmt );
+                            echo "<div class='alert alert-success'>Registared Successfully.</div>";
+                        } else {
+                            die( "Something went wrong." );
+                        }
+                    }
+                }
                 ?>
                 <form class="login-form" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="POST">
                     <div class="mb-3">
