@@ -129,7 +129,6 @@
                                             <td><?php echo $cat_name; ?></td>
                                             <td>
                                                 <a href="edit_cat.php?id=<?php echo $cat_id;?>" class="btn btn-success btn-sm">Edit</a>
-                                                <a href="delete_cat.php?id=<?php echo $cat_id;?>" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
                                         <?php
