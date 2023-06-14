@@ -43,7 +43,7 @@ require "../db.php";
 
                 if ( $adminUser ) {
                     if ( password_verify( $admin_pass, $adminUser["password"] ) ) {
-                        session_start();
+                        //session_start();
                         $_SESSION['adminUser'] = "yes";
                         header( 'Location:dashboard.php' );
                         die();
