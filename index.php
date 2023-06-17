@@ -1,6 +1,6 @@
 <?php
 
-require_once "db.php";
+require "db.php";
 
 ?>
 
@@ -56,7 +56,7 @@ require_once "db.php";
 
                         <div class="bus_types_btn d-flex justify-content-between flex-wrap">
                         <?php
-                            $sql = "SELECT * FROM business_category ORDER BY cat_name ASC";
+                            $sql = "SELECT * FROM category ORDER BY cat_name ASC";
 
                             $result = $conn->query( $sql );
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once "db.php";
+require "db.php";
 
 ?>
 
@@ -26,8 +26,8 @@ require_once "db.php";
             <div class="col-md-12 mt-5">
                 <h2 class="text-center text-uppercase bg-info py-2">All
                 <?php
-                if($_GET['cat_name']){
-                  echo ($_GET['cat_name']);
+                if ( $_GET['cat_name'] ) {
+                    echo ( $_GET['cat_name'] );
                 }
                 ?> Shop Lists</h2>
                 <table id="myTable" class="table table-striped table-hover table-bordered mt-5">

@@ -13,7 +13,7 @@ include 'header.php';
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <a class="nav-link" href="dashboard.php">
@@ -21,7 +21,7 @@ include 'header.php';
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">All Sector</div>
-                            <a class="nav-link" href="sector.php">
+                            <a class="nav-link text-white" href="sector.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Add Sector
                             </a>
@@ -29,6 +29,15 @@ include 'header.php';
                             <a class="nav-link" href="businessList.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Business Lists
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Settings</div>
+                            <a class="nav-link" href="user.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                User
+                            </a>
+                            <a class="nav-link" href="logout.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-sign-out"></i></div>
+                                Logout
                             </a>
                         </div>
                     </div>
@@ -56,7 +65,7 @@ include 'header.php';
                                     if ( isset( $_GET['id'] ) ) {
                                         $getid = $_GET['id'];
 
-                                        $sql   = "SELECT * FROM business_category WHERE cat_id=$getid";
+                                        $sql   = "SELECT * FROM category WHERE cat_id=$getid";
                                         $query = $conn->query( $sql );
 
                                         $data     = mysqli_fetch_assoc( $query );
@@ -68,7 +77,7 @@ include 'header.php';
                                         $new_catName = $_GET['cat_name'];
                                         $new_catId   = $_GET['cat_id'];
 
-                                        $new_sql = "UPDATE business_category SET cat_name='$new_catName' WHERE cat_id=$new_catId";
+                                        $new_sql = "UPDATE category SET cat_name='$new_catName' WHERE cat_id=$new_catId";
 
                                         if ( $conn->query( $new_sql ) == TRUE ) {
                                             echo "<span class='text-success'>Update Success</div>";
@@ -86,7 +95,7 @@ include 'header.php';
                                             <input type="text" class="form-control" id="edit_sector" name="cat_name" value="<?php if ( isset( $_GET['cat_name'] ) ) {echo $new_catName;} else {echo $cat_name;}?>">
                                         </div>
                                         <div class="col-auto">
-                                            <button type="submit" name="update" class="btn btn-success mb-3">Update Sector</button>
+                                            <button type="submit" name="update" class="btn btn-success">Update Sector</button>
                                         </div>
                                     </form>
                                 </div>

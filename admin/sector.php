@@ -13,7 +13,7 @@ include 'header.php';
 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <a class="nav-link" href="dashboard.php">
@@ -29,6 +29,15 @@ include 'header.php';
                             <a class="nav-link" href="businessList.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Business Lists
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Settings</div>
+                            <a class="nav-link" href="user.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                User
+                            </a>
+                            <a class="nav-link" href="logout.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-sign-out"></i></div>
+                                Logout
                             </a>
                         </div>
                     </div>
@@ -53,41 +62,41 @@ include 'header.php';
                                         <div class="col-auto">
                                             <input type="text" class="form-control form-control-sm" id="add_sector" name="cat_name" placeholder="Type New Sector">
                                             <?php
-if ( isset( $_POST['save'] ) ) {
+                                            if ( isset( $_POST['save'] ) ) {
 
-    $add_sector = $_POST['cat_name'];
+                                                $add_sector = $_POST['cat_name'];
 
-    $errors = array();
+                                                $errors = array();
 
-    $sql      = "SELECT * FROM business_category WHERE cat_name = '$add_sector'";
-    $result   = mysqli_query( $conn, $sql );
-    $rowCount = mysqli_num_rows( $result );
+                                                $sql      = "SELECT * FROM category WHERE cat_name = '$add_sector'";
+                                                $result   = mysqli_query( $conn, $sql );
+                                                $rowCount = mysqli_num_rows( $result );
 
-    if ( $rowCount > 0 ) {
-        array_push( $errors, "Sector already exists in the list.." );
-    }
+                                                if ( $rowCount > 0 ) {
+                                                    array_push( $errors, "Sector already exists in the list.." );
+                                                }
 
-    if ( count( $errors ) > 0 ) {
-        foreach ( $errors as $error ) {
-            echo "<span class='text-danger'>$error</span>";
-        }
-    } else {
+                                                if ( count( $errors ) > 0 ) {
+                                                    foreach ( $errors as $error ) {
+                                                        echo "<span class='text-danger'>$error</span>";
+                                                    }
+                                                } else {
 
-        $sql         = "INSERT INTO business_category (cat_name) VALUES(?)";
-        $stmt        = mysqli_stmt_init( $conn );
-        $prepareStmt = mysqli_stmt_prepare( $stmt, $sql );
+                                                    $sql         = "INSERT INTO category (cat_name) VALUES(?)";
+                                                    $stmt        = mysqli_stmt_init( $conn );
+                                                    $prepareStmt = mysqli_stmt_prepare( $stmt, $sql );
 
-        if ( $prepareStmt ) {
-            mysqli_stmt_bind_param( $stmt, "s", $add_sector );
-            mysqli_stmt_execute( $stmt );
+                                                    if ( $prepareStmt ) {
+                                                        mysqli_stmt_bind_param( $stmt, "s", $add_sector );
+                                                        mysqli_stmt_execute( $stmt );
 
-            echo "<span class='text-success'>Sector Added</span>";
-        } else {
-            die( "Something went wrong." );
-        }
-    }
-}
-?>
+                                                        echo "<span class='text-success'>Sector Added</span>";
+                                                    } else {
+                                                        echo "<span class='text-danger'>Something went wrong.</span>";
+                                                    }
+                                                }
+                                            }
+                                            ?>
                                         </div>
                                         <div class="col-auto">
                                             <button type="submit" name="save" class="btn btn-success btn-sm mb-3">Add Sector</button>
@@ -114,7 +123,7 @@ if ( isset( $_POST['save'] ) ) {
                                     <tbody>
                                     <?php
                                         $n   = 1;
-                                        $sql = "SELECT * FROM business_category ORDER BY cat_name ASC";
+                                        $sql = "SELECT * FROM category ORDER BY cat_name ASC";
 
                                         $query = $conn->query( $sql );
 
@@ -123,7 +132,7 @@ if ( isset( $_POST['save'] ) ) {
 
                                                 $cat_id   = $data['cat_id'];
                                                 $cat_name = $data['cat_name'];
-                                                ?>
+                                            ?>
                                         <tr>
                                             <td><?php echo $n; ?></td>
                                             <td><?php echo $cat_name; ?></td>
@@ -131,10 +140,10 @@ if ( isset( $_POST['save'] ) ) {
                                                 <a href="edit_cat.php?id=<?php echo $cat_id; ?>" class="btn btn-success btn-sm">Edit</a>
                                             </td>
                                         </tr>
-                                        <?php
-                                            $n++;
+                                            <?php
+                                        $n++;
+                                            }
                                         }
-                                    }
                                     ?>
                                     </tbody>
                                 </table>
@@ -142,4 +151,4 @@ if ( isset( $_POST['save'] ) ) {
                         </div>
                     </div>
                 </main>
-                <?php include 'footer.php';?>
+<?php include 'footer.php';?>

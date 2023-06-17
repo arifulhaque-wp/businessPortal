@@ -2,17 +2,17 @@
 
 if ( isset( $_POST['submit'] ) ) {
 
-    $shop_name = $_POST['shop_name'];
-    $owner_name = $_POST['owner_name'];
-    $cell_number = $_POST['phone'];
-    $email = $_POST['email'];
+    $shop_name        = $_POST['shop_name'];
+    $owner_name       = $_POST['owner_name'];
+    $cell_number      = $_POST['phone'];
+    $email            = $_POST['email'];
     $shop_description = $_POST['description'];
-    $business_cat = $_POST['bussiness_cat_id'];
-    $upload_file = $_POST['upload_file'];
+    $business_cat     = $_POST['bussiness_cat_id'];
+    $upload_file      = $_POST['upload_file'];
 
     $empmsg_sname = "";
     $empmsg_email = "";
-    $empmsg_desc = "";
+    $empmsg_desc  = "";
     $empmsg_b_cat = "";
 
     if ( empty( $shop_name ) ) {
@@ -59,8 +59,8 @@ if ( isset( $_POST['submit'] ) ) {
                 </div>
                 <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post" id="reg_form" class="reg-form">
                 <?php
-                
-                ?>
+
+?>
                     <div class="mb-3">
                         <label for="business_name" class="form-label">Name of your business (required)</label>
                         <input type="text" class="form-control" name="shop_name" id="business_name" value="<?php if ( isset( $_POST['submit'] ) ) {echo $shop_name;}?>">

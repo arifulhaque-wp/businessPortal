@@ -32,9 +32,9 @@ require_once "../db.php";
                 <?php
                 if ( isset( $_POST['submit'] ) ) {
 
-                    $admin_name = $_POST['name'];
-                    $admin_email = $_POST['email'];
-                    $admin_pass = $_POST['password'];
+                    $admin_name     = $_POST['name'];
+                    $admin_email    = $_POST['email'];
+                    $admin_pass     = $_POST['password'];
                     $admin_con_pass = $_POST['conpassword'];
 
                     $admin_pass_hash = password_hash( $admin_pass, PASSWORD_DEFAULT );
@@ -57,8 +57,8 @@ require_once "../db.php";
                         array_push( $errors, "Password does not match" );
                     }
 
-                    $sql = "SELECT * FROM admin WHERE email = '$admin_email'";
-                    $result = mysqli_query( $conn, $sql );
+                    $sql      = "SELECT * FROM admin WHERE email = '$admin_email'";
+                    $result   = mysqli_query( $conn, $sql );
                     $rowCount = mysqli_num_rows( $result );
 
                     if ( $rowCount > 0 ) {
@@ -71,8 +71,8 @@ require_once "../db.php";
                         }
                     } else {
 
-                        $sql = "INSERT INTO admin (name, email, password) VALUES(?,?,?)";
-                        $stmt = mysqli_stmt_init( $conn );
+                        $sql         = "INSERT INTO admin (name, email, password) VALUES(?,?,?)";
+                        $stmt        = mysqli_stmt_init( $conn );
                         $prepareStmt = mysqli_stmt_prepare( $stmt, $sql );
 
                         if ( $prepareStmt ) {
